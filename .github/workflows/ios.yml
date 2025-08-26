@@ -13,7 +13,7 @@ jobs:
     runs-on: macos-latest
     defaults:
       run:
-        working-directory: /Brixie
+        working-directory: ./Brixie
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
