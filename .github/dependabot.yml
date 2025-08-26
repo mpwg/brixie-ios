@@ -1,0 +1,48 @@
+# Dependabot configuration for Brixie
+# Automatically updates dependencies across all platforms
+
+version: 2
+updates:
+  # Swift
+  - package-ecosystem: "swift"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    reviewers:
+      - "mpwg"
+    labels:
+      - "dependencies"
+      - "swift"
+    commit-message:
+      prefix: "swift"
+      include: "scope"
+    
+  # GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    reviewers:
+      - "mpwg"
+    labels:
+      - "dependencies"
+      - "github-actions"
+      - "ci-cd"
+    commit-message:
+      prefix: "ci"
+      include: "scope"
+    groups:
+      setup-actions:
+        patterns:
+          - "actions/setup-*"
+          - "actions/checkout*"
+      build-actions:
+        patterns:
+          - "actions/upload-*"
+          - "actions/download-*"
+          - "actions/cache*"
+      security-actions:
+        patterns:
+          - "*security*"
+          - "*codeql*"
+          - "*trivy*"
