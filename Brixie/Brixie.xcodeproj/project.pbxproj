@@ -7,40 +7,53 @@
 	objects = {
 
 /* Begin PBXContainerItemProxy section */
-		409F80302E5E253700EBAA23 /* PBXContainerItemProxy */ = {
+		401690B92E5E2CB400F0DE21 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 409F80162E5E253600EBAA23 /* Project object */;
+			containerPortal = 4016909F2E5E2CB300F0DE21 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 409F801D2E5E253600EBAA23;
+			remoteGlobalIDString = 401690A62E5E2CB300F0DE21;
 			remoteInfo = Brixie;
 		};
-		409F803A2E5E253700EBAA23 /* PBXContainerItemProxy */ = {
+		401690C32E5E2CB400F0DE21 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 409F80162E5E253600EBAA23 /* Project object */;
+			containerPortal = 4016909F2E5E2CB300F0DE21 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 409F801D2E5E253600EBAA23;
+			remoteGlobalIDString = 401690A62E5E2CB300F0DE21;
 			remoteInfo = Brixie;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		409F801E2E5E253600EBAA23 /* Brixie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Brixie.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		409F802F2E5E253700EBAA23 /* BrixieTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BrixieTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		409F80392E5E253700EBAA23 /* BrixieUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BrixieUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		401690A72E5E2CB300F0DE21 /* Brixie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Brixie.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		401690B82E5E2CB400F0DE21 /* BrixieTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BrixieTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		401690C22E5E2CB400F0DE21 /* BrixieUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BrixieUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		401690CA2E5E2CB400F0DE21 /* Exceptions for "Brixie" folder in "Brixie" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 401690A62E5E2CB300F0DE21 /* Brixie */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		409F80202E5E253600EBAA23 /* Brixie */ = {
+		401690A92E5E2CB300F0DE21 /* Brixie */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				401690CA2E5E2CB400F0DE21 /* Exceptions for "Brixie" folder in "Brixie" target */,
+			);
 			path = Brixie;
 			sourceTree = "<group>";
 		};
-		409F80322E5E253700EBAA23 /* BrixieTests */ = {
+		401690BB2E5E2CB400F0DE21 /* BrixieTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = BrixieTests;
 			sourceTree = "<group>";
 		};
-		409F803C2E5E253700EBAA23 /* BrixieUITests */ = {
+		401690C52E5E2CB400F0DE21 /* BrixieUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = BrixieUITests;
 			sourceTree = "<group>";
@@ -48,21 +61,21 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		409F801B2E5E253600EBAA23 /* Frameworks */ = {
+		401690A42E5E2CB300F0DE21 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		409F802C2E5E253700EBAA23 /* Frameworks */ = {
+		401690B52E5E2CB400F0DE21 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		409F80362E5E253700EBAA23 /* Frameworks */ = {
+		401690BF2E5E2CB400F0DE21 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -72,22 +85,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		409F80152E5E253600EBAA23 = {
+		4016909E2E5E2CB300F0DE21 = {
 			isa = PBXGroup;
 			children = (
-				409F80202E5E253600EBAA23 /* Brixie */,
-				409F80322E5E253700EBAA23 /* BrixieTests */,
-				409F803C2E5E253700EBAA23 /* BrixieUITests */,
-				409F801F2E5E253600EBAA23 /* Products */,
+				401690A92E5E2CB300F0DE21 /* Brixie */,
+				401690BB2E5E2CB400F0DE21 /* BrixieTests */,
+				401690C52E5E2CB400F0DE21 /* BrixieUITests */,
+				401690A82E5E2CB300F0DE21 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		409F801F2E5E253600EBAA23 /* Products */ = {
+		401690A82E5E2CB300F0DE21 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				409F801E2E5E253600EBAA23 /* Brixie.app */,
-				409F802F2E5E253700EBAA23 /* BrixieTests.xctest */,
-				409F80392E5E253700EBAA23 /* BrixieUITests.xctest */,
+				401690A72E5E2CB300F0DE21 /* Brixie.app */,
+				401690B82E5E2CB400F0DE21 /* BrixieTests.xctest */,
+				401690C22E5E2CB400F0DE21 /* BrixieUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -95,134 +108,134 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		409F801D2E5E253600EBAA23 /* Brixie */ = {
+		401690A62E5E2CB300F0DE21 /* Brixie */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 409F80422E5E253700EBAA23 /* Build configuration list for PBXNativeTarget "Brixie" */;
+			buildConfigurationList = 401690CB2E5E2CB400F0DE21 /* Build configuration list for PBXNativeTarget "Brixie" */;
 			buildPhases = (
-				409F801A2E5E253600EBAA23 /* Sources */,
-				409F801B2E5E253600EBAA23 /* Frameworks */,
-				409F801C2E5E253600EBAA23 /* Resources */,
+				401690A32E5E2CB300F0DE21 /* Sources */,
+				401690A42E5E2CB300F0DE21 /* Frameworks */,
+				401690A52E5E2CB300F0DE21 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				409F80202E5E253600EBAA23 /* Brixie */,
+				401690A92E5E2CB300F0DE21 /* Brixie */,
 			);
 			name = Brixie;
 			packageProductDependencies = (
 			);
 			productName = Brixie;
-			productReference = 409F801E2E5E253600EBAA23 /* Brixie.app */;
+			productReference = 401690A72E5E2CB300F0DE21 /* Brixie.app */;
 			productType = "com.apple.product-type.application";
 		};
-		409F802E2E5E253700EBAA23 /* BrixieTests */ = {
+		401690B72E5E2CB400F0DE21 /* BrixieTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 409F80472E5E253700EBAA23 /* Build configuration list for PBXNativeTarget "BrixieTests" */;
+			buildConfigurationList = 401690D02E5E2CB400F0DE21 /* Build configuration list for PBXNativeTarget "BrixieTests" */;
 			buildPhases = (
-				409F802B2E5E253700EBAA23 /* Sources */,
-				409F802C2E5E253700EBAA23 /* Frameworks */,
-				409F802D2E5E253700EBAA23 /* Resources */,
+				401690B42E5E2CB400F0DE21 /* Sources */,
+				401690B52E5E2CB400F0DE21 /* Frameworks */,
+				401690B62E5E2CB400F0DE21 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				409F80312E5E253700EBAA23 /* PBXTargetDependency */,
+				401690BA2E5E2CB400F0DE21 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				409F80322E5E253700EBAA23 /* BrixieTests */,
+				401690BB2E5E2CB400F0DE21 /* BrixieTests */,
 			);
 			name = BrixieTests;
 			packageProductDependencies = (
 			);
 			productName = BrixieTests;
-			productReference = 409F802F2E5E253700EBAA23 /* BrixieTests.xctest */;
+			productReference = 401690B82E5E2CB400F0DE21 /* BrixieTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		409F80382E5E253700EBAA23 /* BrixieUITests */ = {
+		401690C12E5E2CB400F0DE21 /* BrixieUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 409F804A2E5E253700EBAA23 /* Build configuration list for PBXNativeTarget "BrixieUITests" */;
+			buildConfigurationList = 401690D32E5E2CB400F0DE21 /* Build configuration list for PBXNativeTarget "BrixieUITests" */;
 			buildPhases = (
-				409F80352E5E253700EBAA23 /* Sources */,
-				409F80362E5E253700EBAA23 /* Frameworks */,
-				409F80372E5E253700EBAA23 /* Resources */,
+				401690BE2E5E2CB400F0DE21 /* Sources */,
+				401690BF2E5E2CB400F0DE21 /* Frameworks */,
+				401690C02E5E2CB400F0DE21 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				409F803B2E5E253700EBAA23 /* PBXTargetDependency */,
+				401690C42E5E2CB400F0DE21 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				409F803C2E5E253700EBAA23 /* BrixieUITests */,
+				401690C52E5E2CB400F0DE21 /* BrixieUITests */,
 			);
 			name = BrixieUITests;
 			packageProductDependencies = (
 			);
 			productName = BrixieUITests;
-			productReference = 409F80392E5E253700EBAA23 /* BrixieUITests.xctest */;
+			productReference = 401690C22E5E2CB400F0DE21 /* BrixieUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		409F80162E5E253600EBAA23 /* Project object */ = {
+		4016909F2E5E2CB300F0DE21 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 2600;
 				LastUpgradeCheck = 2600;
 				TargetAttributes = {
-					409F801D2E5E253600EBAA23 = {
+					401690A62E5E2CB300F0DE21 = {
 						CreatedOnToolsVersion = 26.0;
 					};
-					409F802E2E5E253700EBAA23 = {
+					401690B72E5E2CB400F0DE21 = {
 						CreatedOnToolsVersion = 26.0;
-						TestTargetID = 409F801D2E5E253600EBAA23;
+						TestTargetID = 401690A62E5E2CB300F0DE21;
 					};
-					409F80382E5E253700EBAA23 = {
+					401690C12E5E2CB400F0DE21 = {
 						CreatedOnToolsVersion = 26.0;
-						TestTargetID = 409F801D2E5E253600EBAA23;
+						TestTargetID = 401690A62E5E2CB300F0DE21;
 					};
 				};
 			};
-			buildConfigurationList = 409F80192E5E253600EBAA23 /* Build configuration list for PBXProject "Brixie" */;
+			buildConfigurationList = 401690A22E5E2CB300F0DE21 /* Build configuration list for PBXProject "Brixie" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = 409F80152E5E253600EBAA23;
+			mainGroup = 4016909E2E5E2CB300F0DE21;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 409F801F2E5E253600EBAA23 /* Products */;
+			productRefGroup = 401690A82E5E2CB300F0DE21 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				409F801D2E5E253600EBAA23 /* Brixie */,
-				409F802E2E5E253700EBAA23 /* BrixieTests */,
-				409F80382E5E253700EBAA23 /* BrixieUITests */,
+				401690A62E5E2CB300F0DE21 /* Brixie */,
+				401690B72E5E2CB400F0DE21 /* BrixieTests */,
+				401690C12E5E2CB400F0DE21 /* BrixieUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		409F801C2E5E253600EBAA23 /* Resources */ = {
+		401690A52E5E2CB300F0DE21 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		409F802D2E5E253700EBAA23 /* Resources */ = {
+		401690B62E5E2CB400F0DE21 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		409F80372E5E253700EBAA23 /* Resources */ = {
+		401690C02E5E2CB400F0DE21 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -232,21 +245,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		409F801A2E5E253600EBAA23 /* Sources */ = {
+		401690A32E5E2CB300F0DE21 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		409F802B2E5E253700EBAA23 /* Sources */ = {
+		401690B42E5E2CB400F0DE21 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		409F80352E5E253700EBAA23 /* Sources */ = {
+		401690BE2E5E2CB400F0DE21 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -256,20 +269,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		409F80312E5E253700EBAA23 /* PBXTargetDependency */ = {
+		401690BA2E5E2CB400F0DE21 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 409F801D2E5E253600EBAA23 /* Brixie */;
-			targetProxy = 409F80302E5E253700EBAA23 /* PBXContainerItemProxy */;
+			target = 401690A62E5E2CB300F0DE21 /* Brixie */;
+			targetProxy = 401690B92E5E2CB400F0DE21 /* PBXContainerItemProxy */;
 		};
-		409F803B2E5E253700EBAA23 /* PBXTargetDependency */ = {
+		401690C42E5E2CB400F0DE21 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 409F801D2E5E253600EBAA23 /* Brixie */;
-			targetProxy = 409F803A2E5E253700EBAA23 /* PBXContainerItemProxy */;
+			target = 401690A62E5E2CB300F0DE21 /* Brixie */;
+			targetProxy = 401690C32E5E2CB400F0DE21 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		409F80432E5E253700EBAA23 /* Debug */ = {
+		401690CC2E5E2CB400F0DE21 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -308,13 +321,13 @@
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 6.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				XROS_DEPLOYMENT_TARGET = 26.0;
 			};
 			name = Debug;
 		};
-		409F80442E5E253700EBAA23 /* Release */ = {
+		401690CD2E5E2CB400F0DE21 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -353,13 +366,13 @@
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 6.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				XROS_DEPLOYMENT_TARGET = 26.0;
 			};
 			name = Release;
 		};
-		409F80452E5E253700EBAA23 /* Debug */ = {
+		401690CE2E5E2CB400F0DE21 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -421,7 +434,7 @@
 			};
 			name = Debug;
 		};
-		409F80462E5E253700EBAA23 /* Release */ = {
+		401690CF2E5E2CB400F0DE21 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -475,7 +488,7 @@
 			};
 			name = Release;
 		};
-		409F80482E5E253700EBAA23 /* Debug */ = {
+		401690D12E5E2CB400F0DE21 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -494,14 +507,14 @@
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 6.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Brixie.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Brixie";
 				XROS_DEPLOYMENT_TARGET = 26.0;
 			};
 			name = Debug;
 		};
-		409F80492E5E253700EBAA23 /* Release */ = {
+		401690D22E5E2CB400F0DE21 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -520,14 +533,14 @@
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 6.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Brixie.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Brixie";
 				XROS_DEPLOYMENT_TARGET = 26.0;
 			};
 			name = Release;
 		};
-		409F804B2E5E253700EBAA23 /* Debug */ = {
+		401690D42E5E2CB400F0DE21 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -545,14 +558,14 @@
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 6.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				TEST_TARGET_NAME = Brixie;
 				XROS_DEPLOYMENT_TARGET = 26.0;
 			};
 			name = Debug;
 		};
-		409F804C2E5E253700EBAA23 /* Release */ = {
+		401690D52E5E2CB400F0DE21 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -570,7 +583,7 @@
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 6.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				TEST_TARGET_NAME = Brixie;
 				XROS_DEPLOYMENT_TARGET = 26.0;
@@ -580,43 +593,43 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		409F80192E5E253600EBAA23 /* Build configuration list for PBXProject "Brixie" */ = {
+		401690A22E5E2CB300F0DE21 /* Build configuration list for PBXProject "Brixie" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				409F80452E5E253700EBAA23 /* Debug */,
-				409F80462E5E253700EBAA23 /* Release */,
+				401690CE2E5E2CB400F0DE21 /* Debug */,
+				401690CF2E5E2CB400F0DE21 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		409F80422E5E253700EBAA23 /* Build configuration list for PBXNativeTarget "Brixie" */ = {
+		401690CB2E5E2CB400F0DE21 /* Build configuration list for PBXNativeTarget "Brixie" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				409F80432E5E253700EBAA23 /* Debug */,
-				409F80442E5E253700EBAA23 /* Release */,
+				401690CC2E5E2CB400F0DE21 /* Debug */,
+				401690CD2E5E2CB400F0DE21 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		409F80472E5E253700EBAA23 /* Build configuration list for PBXNativeTarget "BrixieTests" */ = {
+		401690D02E5E2CB400F0DE21 /* Build configuration list for PBXNativeTarget "BrixieTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				409F80482E5E253700EBAA23 /* Debug */,
-				409F80492E5E253700EBAA23 /* Release */,
+				401690D12E5E2CB400F0DE21 /* Debug */,
+				401690D22E5E2CB400F0DE21 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		409F804A2E5E253700EBAA23 /* Build configuration list for PBXNativeTarget "BrixieUITests" */ = {
+		401690D32E5E2CB400F0DE21 /* Build configuration list for PBXNativeTarget "BrixieUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				409F804B2E5E253700EBAA23 /* Debug */,
-				409F804C2E5E253700EBAA23 /* Release */,
+				401690D42E5E2CB400F0DE21 /* Debug */,
+				401690D52E5E2CB400F0DE21 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 409F80162E5E253600EBAA23 /* Project object */;
+	rootObject = 4016909F2E5E2CB300F0DE21 /* Project object */;
 }
