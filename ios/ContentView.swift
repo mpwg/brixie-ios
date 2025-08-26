@@ -147,8 +147,8 @@ struct ContentView: View {
         } message: {
             Text(alertMessage)
         }
-        .onChange(of: rebrickableAPI.lastError) { error in
-            if let error = error {
+        .onChange(of: rebrickableAPI.lastError) { _, newError in
+            if let error = newError {
                 alertMessage = error.localizedDescription
                 showingAlert = true
             }
