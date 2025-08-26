@@ -1,13 +1,13 @@
 //
-//  iosUITestsLaunchTests.swift
-//  iosUITests
+//  BrixieUITestsLaunchTests.swift
+//  BrixieUITests
 //
-//  Created by Matthias Wallner-Géhri on 25.08.25.
+//  Created by Matthias Wallner-Géhri on 26.08.25.
 //
 
 import XCTest
 
-final class iosUITestsLaunchTests: XCTestCase {
+final class BrixieUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true

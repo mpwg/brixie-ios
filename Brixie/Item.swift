@@ -1,8 +1,8 @@
 //
 //  Item.swift
-//  ios
+//  Brixie
 //
-//  Created by Matthias Wallner-Géhri on 25.08.25.
+//  Created by Matthias Wallner-Géhri on 26.08.25.
 //
 
 import Foundation

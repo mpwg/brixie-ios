@@ -57,7 +57,7 @@ jobs:
 
       - name: Build iOS App
         run: |
-          xcodebuild -project ios.xcodeproj -scheme ios  -destination "generic/platform=iOS Simulator" build
+          xcodebuild -project Brixie.xcodeproj -scheme Brixie  -destination "generic/platform=iOS Simulator" build
       - name: Upload Build Logs
         if: failure()
         uses: actions/upload-artifact@v4
