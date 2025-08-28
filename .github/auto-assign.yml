@@ -22,7 +22,8 @@ numberOfReviewers: 1
 # Set to 0 to add all the assignees (default: 0)
 numberOfAssignees: 0
 
-# A list of keywords to be skipped the process that add reviewers if pull requests include it
+# A list of keywords to be skipped the process that add reviewers
+# if pull requests include it
 skipKeywords:
   - wip
   - WIP

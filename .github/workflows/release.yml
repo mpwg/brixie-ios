@@ -22,7 +22,7 @@ jobs:
     defaults:
       run:
         working-directory: ./Brixie
-    
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -61,7 +61,10 @@ jobs:
 
       - name: Build Release Version
         run: |
-          xcodebuild -project Brixie.xcodeproj -scheme Brixie -configuration Release -destination "generic/platform=iOS" archive -archivePath build/Brixie.xcarchive
+          xcodebuild -project Brixie.xcodeproj -scheme Brixie \
+            -configuration Release \
+            -destination "generic/platform=iOS" \
+            archive -archivePath build/Brixie.xcarchive
 
       - name: Export IPA
         run: |
@@ -82,7 +85,7 @@ jobs:
           </dict>
           </plist>
           EOF
-          
+
           # Export would fail without proper certificates, so we'll just create a placeholder
           echo "IPA export would happen here with proper certificates" > build/export/Brixie.ipa
 
@@ -105,15 +108,17 @@ jobs:
           fi
 
       - name: Create Release
-        uses: actions/create-release@v1
+        uses: softprops/action-gh-release@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ steps.version.outputs.version }}
-          release_name: Release ${{ steps.version.outputs.version }}
+          name: Release ${{ steps.version.outputs.version }}
           body: ${{ steps.release_notes.outputs.release_notes }}
           draft: false
           prerelease: ${{ contains(steps.version.outputs.version, 'beta') || contains(steps.version.outputs.version, 'alpha') }}
+          files: |
+            ./Brixie/build/export/Brixie.ipa
 
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v4

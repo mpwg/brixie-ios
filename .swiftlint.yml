@@ -146,7 +146,7 @@ custom_rules:
     regex: "import UIKit.*\n.*struct.*View"
     message: "Consider using SwiftUI alternatives instead of UIKit"
     severity: warning
-    
+
   # Ensure proper file headers
   file_header:
     required_pattern: |

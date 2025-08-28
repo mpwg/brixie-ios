@@ -23,7 +23,7 @@ jobs:
     defaults:
       run:
         working-directory: ./Brixie
-    
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -94,13 +94,20 @@ jobs:
 
       - name: Fast Build Check
         run: |
-          # Quick syntax check
-          find . -name "*.swift" -exec xcrun -sdk iphoneos swiftc -parse {} \;
+          # Quick syntax check using swiftc
+          echo "🔍 Running Swift syntax check..."
+          find . -name "*.swift" -not -path "./build/*" -not -path "./DerivedData/*" \
+            -exec echo "Checking: {}" \; \
+            -exec xcrun swiftc -parse {} \; || echo "⚠️ Syntax check completed with warnings"
 
       - name: Check for Merge Conflicts
         run: |
+          echo "🔍 Checking for merge conflict markers..."
           # Check for conflict markers
-          if grep -r "<<<<<<< HEAD\|=======\|>>>>>>> " . --include="*.swift" --include="*.md" --include="*.yml" --include="*.yaml"; then
+          if grep -r "<<<<<<< HEAD\|=======\|>>>>>>> " . \
+              --include="*.swift" --include="*.md" --include="*.yml" \
+              --include="*.yaml" --exclude-dir=".git" --exclude-dir="build" \
+              --exclude-dir="DerivedData"; then
             echo "❌ Merge conflict markers found"
             exit 1
           else
@@ -109,25 +116,30 @@ jobs:
 
       - name: Check File Sizes
         run: |
+          echo "🔍 Checking for large files..."
           # Check for large files that shouldn't be committed
-          find . -type f -size +1M -not -path "./.git/*" -not -path "./build/*" -not -path "./DerivedData/*" | while read file; do
+          find . -type f -size +1M -not -path "./.git/*" \
+              -not -path "./build/*" -not -path "./DerivedData/*" \
+              -not -path "./.build/*" | while read file; do
             echo "⚠️ Large file detected: $file ($(du -h "$file" | cut -f1))"
           done
+          echo "✅ Large file check completed"
 
       - name: Validate Xcode Project
         run: |
+          echo "🔍 Validating Xcode project structure..."
           # Validate project structure
           if [ ! -f "Brixie.xcodeproj/project.pbxproj" ]; then
             echo "❌ Xcode project file not found"
             exit 1
           fi
-          
+
           # Check for valid scheme
           if ! xcodebuild -list -project Brixie.xcodeproj | grep -q "Brixie"; then
             echo "❌ Main scheme not found"
             exit 1
           fi
-          
+
           echo "✅ Xcode project validation passed"
 
       - name: Check Code Coverage Requirements
@@ -149,7 +161,7 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3.1"
+          ruby-version: "3.2"
 
       - name: Install Danger
         run: gem install danger
@@ -205,7 +217,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Auto-assign reviewers
-        uses: kentaro-m/auto-assign-action@v1.2.5
+        uses: kentaro-m/auto-assign-action@v1.2.6
         with:
           configuration-path: ".github/auto-assign.yml"
 

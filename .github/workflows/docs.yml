@@ -8,13 +8,13 @@ permissions:
 on:
   push:
     branches: [main]
-    paths: 
+    paths:
       - 'Brixie/**/*.swift'
       - 'docs/**'
       - '*.md'
   pull_request:
     branches: [main]
-    paths: 
+    paths:
       - 'Brixie/**/*.swift'
       - 'docs/**'
       - '*.md'
@@ -31,7 +31,7 @@ jobs:
     defaults:
       run:
         working-directory: ./Brixie
-    
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -51,11 +51,13 @@ jobs:
       - name: Generate Documentation
         run: |
           # Generate Swift-DocC documentation
-          xcodebuild docbuild -project Brixie.xcodeproj -scheme Brixie -destination "generic/platform=iOS Simulator"
-          
+          xcodebuild docbuild -project Brixie.xcodeproj -scheme Brixie \
+            -destination "platform=iOS Simulator,name=iPhone 15,OS=latest"
+
           # Find the generated documentation
-          DOCC_PATH=$(find ~/Library/Developer/Xcode/DerivedData -name "*.doccarchive" -type d | head -1)
-          
+          DOCC_PATH=$(find ~/Library/Developer/Xcode/DerivedData \
+            -name "*.doccarchive" -type d | head -1)
+
           if [ -n "$DOCC_PATH" ]; then
             echo "Documentation generated at: $DOCC_PATH"
             # Copy to docs directory
