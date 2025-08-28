@@ -78,7 +78,7 @@ jobs:
           requireScope: false
 
       - name: Check PR Size
-        uses: pascalgn/size-label-action@v0.4.3
+        uses: pascalgn/size-label-action@v0.5.5
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
