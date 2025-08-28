@@ -1,0 +1,88 @@
+# Labeler configuration for Brixie
+# Automatically add labels to PRs based on files changed
+
+# Core app functionality
+"area: core":
+  - "Brixie/Brixie/BrixieApp.swift"
+  - "Brixie/Brixie/ContentView.swift"
+  - "Brixie/Brixie/**/*.swift"
+
+# Data and models
+"area: data":
+  - "Brixie/Brixie/Item.swift"
+  - "Brixie/Brixie/**/Model/**/*.swift"
+  - "Brixie/Brixie/**/Data/**/*.swift"
+
+# User Interface
+"area: ui":
+  - "Brixie/Brixie/**/Views/**/*.swift"
+  - "Brixie/Brixie/**/Components/**/*.swift"
+  - "Brixie/Brixie/**/*View.swift"
+
+# Testing
+"area: tests":
+  - "Brixie/BrixieTests/**/*.swift"
+  - "Brixie/BrixieUITests/**/*.swift"
+  - "**/*Test.swift"
+  - "**/*Tests.swift"
+
+# Documentation
+"area: docs":
+  - "*.md"
+  - "docs/**/*"
+  - "**/*.md"
+
+# CI/CD and workflows
+"area: ci":
+  - ".github/workflows/**/*.yml"
+  - ".github/workflows/**/*.yaml"
+  - ".github/**/*.yml"
+  - ".github/**/*.yaml"
+
+# Dependencies
+"area: dependencies":
+  - "Podfile"
+  - "Podfile.lock"
+  - "Package.swift"
+  - "Package.resolved"
+  - ".github/dependabot.yml"
+
+# Configuration
+"area: config":
+  - ".swiftlint.yml"
+  - ".swift-format"
+  - "*.yml"
+  - "*.yaml"
+  - "*.json"
+  - ".gitignore"
+
+# Xcode project files
+"area: project":
+  - "**/*.xcodeproj/**"
+  - "**/*.xcworkspace/**"
+  - "**/*.pbxproj"
+
+# Size labels (these work with the size-label-action)
+"size: XS":
+  - any: ["**/*"]
+    changes: 0
+
+"size: S":
+  - any: ["**/*"]
+    changes: 20
+
+"size: M":
+  - any: ["**/*"]
+    changes: 50
+
+"size: L":
+  - any: ["**/*"]
+    changes: 200
+
+"size: XL":
+  - any: ["**/*"]
+    changes: 800
+
+"size: XXL":
+  - any: ["**/*"]
+    changes: 2000

@@ -1,0 +1,133 @@
+name: Documentation
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+on:
+  push:
+    branches: [main]
+    paths: 
+      - 'Brixie/**/*.swift'
+      - 'docs/**'
+      - '*.md'
+  pull_request:
+    branches: [main]
+    paths: 
+      - 'Brixie/**/*.swift'
+      - 'docs/**'
+      - '*.md'
+  workflow_dispatch:
+
+# Allow only one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  generate-docs:
+    runs-on: macos-latest
+    defaults:
+      run:
+        working-directory: ./Brixie
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Xcode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: latest
+
+      - name: Install Swift-DocC Plugin
+        run: |
+          # Check if project uses Swift Package Manager
+          if [ -f "Package.swift" ]; then
+            swift package plugin --list
+          fi
+
+      - name: Generate Documentation
+        run: |
+          # Generate Swift-DocC documentation
+          xcodebuild docbuild -project Brixie.xcodeproj -scheme Brixie -destination "generic/platform=iOS Simulator"
+          
+          # Find the generated documentation
+          DOCC_PATH=$(find ~/Library/Developer/Xcode/DerivedData -name "*.doccarchive" -type d | head -1)
+          
+          if [ -n "$DOCC_PATH" ]; then
+            echo "Documentation generated at: $DOCC_PATH"
+            # Copy to docs directory
+            mkdir -p ../docs
+            cp -r "$DOCC_PATH" ../docs/
+          else
+            echo "No documentation generated"
+            # Create a basic documentation structure
+            mkdir -p ../docs
+            cat > ../docs/index.html << EOF
+          <!DOCTYPE html>
+          <html>
+          <head>
+              <title>Brixie Documentation</title>
+              <meta charset="utf-8">
+              <style>
+                  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; margin: 40px; }
+                  h1 { color: #333; }
+                  .placeholder { background: #f5f5f5; padding: 20px; border-radius: 8px; }
+              </style>
+          </head>
+          <body>
+              <h1>Brixie Documentation</h1>
+              <div class="placeholder">
+                  <p>Documentation will be automatically generated from Swift code comments.</p>
+                  <p>To enable full documentation generation:</p>
+                  <ul>
+                      <li>Add documentation comments to your Swift files</li>
+                      <li>Consider adding a Swift Package with DocC support</li>
+                  </ul>
+              </div>
+          </body>
+          </html>
+          EOF
+          fi
+
+      - name: Setup Pages
+        if: github.ref == 'refs/heads/main'
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        if: github.ref == 'refs/heads/main'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./docs
+
+  # Deploy job
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: generate-docs
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+  lint-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Lint Markdown files
+        uses: DavidAnson/markdownlint-cli2-action@v14
+        with:
+          globs: '**/*.md'
+
+      - name: Check for broken links
+        uses: lycheeverse/lychee-action@v1
+        with:
+          args: '--verbose --no-progress **/*.md **/*.html'
+          fail: true

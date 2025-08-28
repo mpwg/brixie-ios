@@ -1,0 +1,220 @@
+name: Pull Request Validation
+
+permissions:
+  contents: read
+  pull-requests: write
+  checks: write
+  statuses: write
+
+on:
+  pull_request:
+    branches: [main, develop]
+    types: [opened, synchronize, reopened, ready_for_review]
+
+# Ensure only one workflow runs per PR
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate-pr:
+    if: github.event.pull_request.draft == false
+    runs-on: macos-latest
+    defaults:
+      run:
+        working-directory: ./Brixie
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Xcode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: latest
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.1"
+          bundler-cache: true
+
+      - name: Cache Swift Package Manager
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/Library/Developer/Xcode/DerivedData/**/SourcePackages
+            ~/Library/Caches/org.swift.swiftpm
+          key: ${{ runner.os }}-spm-${{ hashFiles('**/Package.resolved') }}
+          restore-keys: |
+            ${{ runner.os }}-spm-
+
+      - name: Validate PR Title
+        uses: amannn/action-semantic-pull-request@v5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          types: |
+            feat
+            fix
+            docs
+            style
+            refactor
+            perf
+            test
+            build
+            ci
+            chore
+            revert
+          scopes: |
+            ui
+            core
+            data
+            tests
+            ci
+            deps
+          requireScope: false
+
+      - name: Check PR Size
+        uses: pascalgn/size-label-action@v0.4.3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          sizes: >
+            {
+              "0": "XS",
+              "20": "S",
+              "50": "M",
+              "200": "L",
+              "800": "XL",
+              "2000": "XXL"
+            }
+
+      - name: Fast Build Check
+        run: |
+          # Quick syntax check
+          find . -name "*.swift" -exec xcrun -sdk iphoneos swiftc -parse {} \;
+
+      - name: Check for Merge Conflicts
+        run: |
+          # Check for conflict markers
+          if grep -r "<<<<<<< HEAD\|=======\|>>>>>>> " . --include="*.swift" --include="*.md" --include="*.yml" --include="*.yaml"; then
+            echo "❌ Merge conflict markers found"
+            exit 1
+          else
+            echo "✅ No merge conflict markers found"
+          fi
+
+      - name: Check File Sizes
+        run: |
+          # Check for large files that shouldn't be committed
+          find . -type f -size +1M -not -path "./.git/*" -not -path "./build/*" -not -path "./DerivedData/*" | while read file; do
+            echo "⚠️ Large file detected: $file ($(du -h "$file" | cut -f1))"
+          done
+
+      - name: Validate Xcode Project
+        run: |
+          # Validate project structure
+          if [ ! -f "Brixie.xcodeproj/project.pbxproj" ]; then
+            echo "❌ Xcode project file not found"
+            exit 1
+          fi
+          
+          # Check for valid scheme
+          if ! xcodebuild -list -project Brixie.xcodeproj | grep -q "Brixie"; then
+            echo "❌ Main scheme not found"
+            exit 1
+          fi
+          
+          echo "✅ Xcode project validation passed"
+
+      - name: Check Code Coverage Requirements
+        if: github.event_name == 'pull_request'
+        run: |
+          # This would be expanded with actual coverage requirements
+          echo "🧪 Code coverage check would run here"
+          echo "Future: Ensure new code has adequate test coverage"
+
+  danger-check:
+    if: github.event.pull_request.draft == false
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.1"
+
+      - name: Install Danger
+        run: gem install danger
+
+      - name: Create Dangerfile
+        run: |
+          cat > Dangerfile << 'EOF'
+          # Dangerfile for Brixie iOS
+
+          # Make it more obvious that a PR is a work in progress and shouldn't be merged yet
+          warn("PR is classed as Work in Progress") if github.pr_title.include? "[WIP]"
+
+          # Warn when there is a big PR
+          warn("Big PR") if git.lines_of_code > 500
+
+          # Ensure a clean commits history
+          if git.commits.any? { |c| c.message =~ /^Merge branch/ }
+            warn("Please rebase to get rid of the merge commits in this PR")
+          end
+
+          # Check for iOS specific files
+          has_app_changes = !git.modified_files.grep(/Brixie\/.*\.swift/).empty?
+          has_test_changes = !git.modified_files.grep(/.*Tests\/.*\.swift/).empty?
+
+          # Encourage writing tests
+          if has_app_changes && !has_test_changes
+            warn("Consider adding tests for your changes")
+          end
+
+          # Check for Podfile/Package changes
+          if git.modified_files.include?("Podfile") || git.modified_files.include?("Package.swift")
+            warn("Dependencies have been updated. Please make sure to test thoroughly.")
+          end
+
+          # Encourage smaller PRs
+          if git.lines_of_code > 800
+            warn("This PR is quite large. Consider breaking it into smaller PRs for easier review.")
+          end
+
+          # Check if README was updated
+          if git.modified_files.include?("README.md")
+            message("Thanks for updating the README! 📚")
+          end
+          EOF
+
+      - name: Run Danger
+        env:
+          DANGER_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: danger
+
+  auto-assign-reviewers:
+    if: github.event.pull_request.draft == false && github.event.action == 'opened'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Auto-assign reviewers
+        uses: kentaro-m/auto-assign-action@v1.2.5
+        with:
+          configuration-path: ".github/auto-assign.yml"
+
+  label-pr:
+    if: github.event.pull_request.draft == false
+    runs-on: ubuntu-latest
+    steps:
+      - name: Label PR based on files
+        uses: actions/labeler@v5
+        with:
+          configuration-path: .github/labeler.yml
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
