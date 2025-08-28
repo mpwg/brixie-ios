@@ -3,46 +3,96 @@
 
 version: 2
 updates:
-  # Swift
+  # Swift Package Manager
   - package-ecosystem: "swift"
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "UTC"
     reviewers:
+      - "mpwg"
+    assignees:
       - "mpwg"
     labels:
       - "dependencies"
       - "swift"
+      - "automerge"
     commit-message:
-      prefix: "swift"
+      prefix: "deps(swift)"
       include: "scope"
-    
+    open-pull-requests-limit: 5
+    allow:
+      - dependency-type: "direct"
+      - dependency-type: "indirect"
+
   # GitHub Actions
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: "weekly"
+      day: "monday"
+      time: "10:00"
+      timezone: "UTC"
     reviewers:
+      - "mpwg"
+    assignees:
       - "mpwg"
     labels:
       - "dependencies"
       - "github-actions"
       - "ci-cd"
+      - "automerge"
     commit-message:
-      prefix: "ci"
+      prefix: "deps(actions)"
       include: "scope"
+    open-pull-requests-limit: 3
     groups:
       setup-actions:
         patterns:
           - "actions/setup-*"
           - "actions/checkout*"
+          - "maxim-lobanov/setup-xcode*"
+          - "ruby/setup-ruby*"
+        update-types:
+          - "minor"
+          - "patch"
       build-actions:
         patterns:
           - "actions/upload-*"
           - "actions/download-*"
           - "actions/cache*"
+          - "actions/create-release*"
+        update-types:
+          - "minor"
+          - "patch"
       security-actions:
         patterns:
           - "*security*"
           - "*codeql*"
           - "*trivy*"
+          - "github/codeql-action*"
+          - "aquasecurity/trivy-action*"
+        update-types:
+          - "minor"
+          - "patch"
+
+  # CocoaPods (if used in the future)
+  - package-ecosystem: "bundler"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "tuesday"
+      time: "09:00"
+      timezone: "UTC"
+    reviewers:
+      - "mpwg"
+    labels:
+      - "dependencies"
+      - "ruby"
+      - "cocoapods"
+    commit-message:
+      prefix: "deps(ruby)"
+      include: "scope"
+    open-pull-requests-limit: 3

@@ -1,6 +1,7 @@
+name: iOS CI
+
 permissions:
   contents: read
-name: iOS CI
 
 on:
   push:
@@ -59,7 +60,38 @@ jobs:
 
       - name: Build iOS App
         run: |
-          xcodebuild -project Brixie.xcodeproj -scheme Brixie  -destination "generic/platform=iOS Simulator" build
+          echo "🔨 Building iOS App..."
+          if xcodebuild -project Brixie.xcodeproj -scheme Brixie \
+            -destination "platform=iOS Simulator,name=iPhone 15,OS=latest" \
+            build; then
+            echo "✅ Build completed successfully"
+          else
+            echo "❌ Build failed"
+            exit 1
+          fi
+
+      - name: Run Unit Tests
+        run: |
+          echo "🧪 Running Unit Tests..."
+          if xcodebuild test -project Brixie.xcodeproj -scheme Brixie \
+            -destination "platform=iOS Simulator,name=iPhone 15,OS=latest"; then
+            echo "✅ Unit tests passed"
+          else
+            echo "❌ Unit tests failed"
+            exit 1
+          fi
+
+      - name: Run UI Tests
+        run: |
+          echo "🖥️ Running UI Tests..."
+          if xcodebuild test -project Brixie.xcodeproj -scheme Brixie \
+            -destination "platform=iOS Simulator,name=iPhone 15,OS=latest" \
+            -only-testing:BrixieUITests; then
+            echo "✅ UI tests passed"
+          else
+            echo "⚠️ UI tests failed or no UI tests found"
+          fi
+        continue-on-error: true
       - name: Upload Build Logs
         if: failure()
         uses: actions/upload-artifact@v4
@@ -68,3 +100,13 @@ jobs:
           path: |
             ~/Library/Developer/Xcode/DerivedData/**/Logs/**
           retention-days: 7
+
+      - name: Upload Test Results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: |
+            ~/Library/Developer/Xcode/DerivedData/**/Logs/Test/**
+          retention-days: 7
+
