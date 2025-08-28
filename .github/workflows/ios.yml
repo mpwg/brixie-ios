@@ -60,20 +60,37 @@ jobs:
 
       - name: Build iOS App
         run: |
-          xcodebuild -project Brixie.xcodeproj -scheme Brixie \
+          echo "🔨 Building iOS App..."
+          if xcodebuild -project Brixie.xcodeproj -scheme Brixie \
             -destination "platform=iOS Simulator,name=iPhone 15,OS=latest" \
-            build
+            build; then
+            echo "✅ Build completed successfully"
+          else
+            echo "❌ Build failed"
+            exit 1
+          fi
 
       - name: Run Unit Tests
         run: |
-          xcodebuild test -project Brixie.xcodeproj -scheme Brixie \
-            -destination "platform=iOS Simulator,name=iPhone 15,OS=latest"
+          echo "🧪 Running Unit Tests..."
+          if xcodebuild test -project Brixie.xcodeproj -scheme Brixie \
+            -destination "platform=iOS Simulator,name=iPhone 15,OS=latest"; then
+            echo "✅ Unit tests passed"
+          else
+            echo "❌ Unit tests failed"
+            exit 1
+          fi
 
       - name: Run UI Tests
         run: |
-          xcodebuild test -project Brixie.xcodeproj -scheme Brixie \
+          echo "🖥️ Running UI Tests..."
+          if xcodebuild test -project Brixie.xcodeproj -scheme Brixie \
             -destination "platform=iOS Simulator,name=iPhone 15,OS=latest" \
-            -only-testing:BrixieUITests
+            -only-testing:BrixieUITests; then
+            echo "✅ UI tests passed"
+          else
+            echo "⚠️ UI tests failed or no UI tests found"
+          fi
         continue-on-error: true
       - name: Upload Build Logs
         if: failure()
