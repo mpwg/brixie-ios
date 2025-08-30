@@ -62,7 +62,7 @@ jobs:
         run: |
           echo "🔨 Building iOS App..."
           if xcodebuild -project Brixie.xcodeproj -scheme Brixie \
-            -destination "platform=iOS Simulator,name=iPhone 15,OS=latest" \
+            -destination "platform=iOS Simulator,OS=26.0,name=iPhone 16" \
             build; then
             echo "✅ Build completed successfully"
           else
@@ -74,7 +74,7 @@ jobs:
         run: |
           echo "🧪 Running Unit Tests..."
           if xcodebuild test -project Brixie.xcodeproj -scheme Brixie \
-            -destination "platform=iOS Simulator,name=iPhone 15,OS=latest"; then
+            -destination "platform=iOS Simulator,OS=26.0,name=iPhone 16"; then
             echo "✅ Unit tests passed"
           else
             echo "❌ Unit tests failed"
@@ -85,7 +85,7 @@ jobs:
         run: |
           echo "🖥️ Running UI Tests..."
           if xcodebuild test -project Brixie.xcodeproj -scheme Brixie \
-            -destination "platform=iOS Simulator,name=iPhone 15,OS=latest" \
+            -destination "platform=iOS Simulator,OS=26.0,name=iPhone 16" \
             -only-testing:BrixieUITests; then
             echo "✅ UI tests passed"
           else
