@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		40A81EC92E6311D900428A7C /* OpenAPIClient in Frameworks */ = {isa = PBXBuildFile; productRef = 40A81EC82E6311D900428A7C /* OpenAPIClient */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		401690B92E5E2CB400F0DE21 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -65,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40A81EC92E6311D900428A7C /* OpenAPIClient in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +130,7 @@
 			);
 			name = Brixie;
 			packageProductDependencies = (
+				40A81EC82E6311D900428A7C /* OpenAPIClient */,
 			);
 			productName = Brixie;
 			productReference = 401690A72E5E2CB300F0DE21 /* Brixie.app */;
@@ -208,6 +214,9 @@
 			);
 			mainGroup = 4016909E2E5E2CB300F0DE21;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				40A81EC72E6311D900428A7C /* XCRemoteSwiftPackageReference "Rebrickable-swiftclient-package" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 401690A82E5E2CB300F0DE21 /* Products */;
 			projectDirPath = "";
@@ -630,6 +639,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		40A81EC72E6311D900428A7C /* XCRemoteSwiftPackageReference "Rebrickable-swiftclient-package" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mpwg/Rebrickable-swiftclient-package";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		40A81EC82E6311D900428A7C /* OpenAPIClient */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 40A81EC72E6311D900428A7C /* XCRemoteSwiftPackageReference "Rebrickable-swiftclient-package" */;
+			productName = OpenAPIClient;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4016909F2E5E2CB300F0DE21 /* Project object */;
 }
